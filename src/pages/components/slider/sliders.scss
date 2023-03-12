@@ -1,0 +1,46 @@
+.swiper-button-prev {
+    width: 50px !important;
+    height: 50px !important;
+
+    background: rgba(0, 0, 0, 0.0286327);
+    border-radius: 25px;
+
+    &::after {
+        content: 'left' !important;
+        background-image: url('../../../assets/icon/leftarrow.svg') !important;
+        background-repeat: no-repeat;
+        width: 9px;
+        height: 14px;
+    }
+}
+
+.swiper-button-next {
+    width: 50px !important;
+    height: 50px !important;
+
+    background: rgba(0, 0, 0, 0.0286327);
+    border-radius: 25px;
+
+    &::after {
+        content: 'right' !important;
+        background-image: url('../../../assets/icon/rightarrow.svg') !important;
+        background-repeat: no-repeat;
+        width: 9px;
+        height: 14px;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background: #5A5AC9 !important;
+}
+
+.swiper-pagination-bullet {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.sliderproduction {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+}
