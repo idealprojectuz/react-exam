@@ -1,31 +1,31 @@
 import React from 'react'
-import banner1 from '../../../assets/img/rasm1.png'
-import banner2 from '../../../assets/img/rasm2.jpg'
-import banner3 from '../../../assets/img/rasm3.jpg'
-import './banner.scss'
+import banner1 from '../../../assets/img/ads1.png'
+import banner2 from '../../../assets/img/ads2.png'
+import banner3 from '../../../assets/img/ads3.png'
+import './ads.scss'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-export const Banner = () => {
+export const Ads = () => {
     return (
-        <section className='banner'>
+        <section className='ads'>
             <div className='container'>
-                <ul className='banner-wrapper'>
-                    <li className='banner-item'>
-                        {/* <img src={banner1} alt="banner" /> */}
+                <ul className='ads-wrapper'>
+                    <li className='ads-item'>
+                        {/* <img src={banner1} alt="ads-banner" /> */}
                         <LazyLoadImage
                             alt='banner'
                             effect="blur"
                             src={banner1} />
                     </li>
-                    <li className='banner-item'>
-                        {/* <img src={banner2} alt="banner" /> */}
+                    <li className='ads-item'>
+                        {/* <img src={banner2} alt="ads-banner" /> */}
                         <LazyLoadImage
                             alt='banner'
                             effect="blur"
                             src={banner2} />
                     </li>
-                    <li className='banner-item'>
-                        {/* <img src={banner3} alt="banner" /> */}
+                    <li className='ads-item'>
+                        {/* <img src={banner3} alt="ads-banner" /> */}
                         <LazyLoadImage
                             alt='banner'
                             effect="blur"

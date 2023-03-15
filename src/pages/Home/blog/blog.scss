@@ -1,0 +1,46 @@
+.blog-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 1101px) {
+    .blogcart {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 834px) {
+    .blogcart {
+        width: 48% !important;
+    }
+}
+
+@media screen and (max-width: 751px) {
+    .blogcart {
+        width: 48% !important;
+        margin-bottom: 20px;
+    }
+
+    .blog-wrapper {
+        gap: 10px;
+
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .blogcart {
+        width: 95% !important;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .blog-wrapper {
+        gap: 0px;
+
+    }
+
+}

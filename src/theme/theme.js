@@ -7,7 +7,9 @@ const theme = createTheme({
         outlined: {
             main: '#5A5AC9',
         },
+        
     },
+
 });
 
 export default theme;

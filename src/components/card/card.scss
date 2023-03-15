@@ -1,0 +1,16 @@
+.productcart {
+    box-shadow: 0px 0px 11.83px rgba(0, 0, 0, 0.06) !important;
+    width: 23%;
+}
+
+.productWrapper {
+    position: relative !important;
+}
+
+.likebutton {
+    position: absolute !important;
+    right: 10px;
+    background-color: white !important;
+    top: 10px;
+    z-index: 999;
+}
