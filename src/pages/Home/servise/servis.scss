@@ -1,0 +1,96 @@
+.servis-wrapper {
+    width: 100%;
+    height: 173.5px;
+    background: #5A5AC9;
+}
+
+.servis {
+
+    height: 333.5px;
+}
+
+.servis-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.servis-menu {
+    display: flex;
+    align-items: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    list-style-type: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .servis-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        width: 25%;
+    }
+}
+
+.servis-title {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.servis-description {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 962px) {
+    .servis-menu {
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .servis-item {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 744px) {
+    .servis {
+        .container {
+            max-width: 744px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .servis-wrapper {
+        height: 100%;
+        padding: 30px auto;
+    }
+
+    .servis-menu {
+        justify-content: center !important;
+    }
+
+    .servis {
+        .container {
+            max-width: 510px !important;
+        }
+    }
+
+    .servis-menu .servis-item {
+        justify-content: center;
+    }
+
+    .servis-item {
+        width: 100% !important;
+    }
+}

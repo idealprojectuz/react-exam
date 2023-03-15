@@ -1,0 +1,40 @@
+.banner-wrapper {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    // flex-wrap: wrap;
+}
+
+.banner {
+    margin: 20px auto;
+}
+
+
+.banner-item {
+    img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .banner-item {
+        max-width: 1250px;
+
+        img {
+            width: 100%;
+            height: 266px;
+        }
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .banner-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .banner-item {
+        max-width: 700px;
+
+    }
+}

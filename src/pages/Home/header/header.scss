@@ -108,3 +108,49 @@
     list-style-type: none;
     gap: 15px;
 }
+
+
+
+@media only screen and (max-width: 743px) {
+    .container {
+        max-width: 650px;
+    }
+
+    .nav-wrapper {
+        display: none !important;
+    }
+
+    .menu-wrapper {
+        display: none;
+    }
+
+    .social-media {
+        img {
+            width: 24px;
+        }
+    }
+
+    .header-flex {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    header {
+        .container {
+            max-width: 410px;
+        }
+    }
+
+    .social-media {
+        width: 50% !important;
+    }
+
+    .header__nav-phone {
+        img {
+            display: none;
+        }
+
+        width: 50%;
+    }
+}

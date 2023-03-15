@@ -1,7 +1,7 @@
 .swiper-button-prev {
     width: 50px !important;
     height: 50px !important;
-
+    z-index: 9999 !important;
     background: rgba(0, 0, 0, 0.0286327);
     border-radius: 25px;
 
@@ -15,6 +15,7 @@
 }
 
 .swiper-button-next {
+    z-index: 9999 !important;
     width: 50px !important;
     height: 50px !important;
 
@@ -43,4 +44,72 @@
     width: 100%;
     height: 90vh;
     object-fit: cover;
+}
+
+.myslider {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#slider1 {
+    background-color: #FAFAFA;
+}
+
+#slider2 {
+    background-color: #F4F6F4 !important;
+}
+
+.sliderimage {
+    img {
+        width: 400px;
+    }
+}
+
+.slider-content {
+    font-family: sans-serif !important;
+    text-transform: uppercase;
+
+    h1 {
+        font-size: 35px;
+    }
+}
+
+#macbookphoto {
+    img {
+        width: 500px;
+        object-fit: cover;
+    }
+}
+
+.myslider {
+    height: 80vh;
+}
+
+
+
+@media screen and (max-width: 862px) {
+    .myslider {
+        flex-direction: column-reverse;
+
+        .sliderimage {
+            img {
+                width: 200px;
+            }
+        }
+    }
+
+    .slider-content {
+        text-align: center;
+
+        h1 {
+            font-size: 25px;
+        }
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .myslider {
+        height: 90vh !important;
+    }
 }

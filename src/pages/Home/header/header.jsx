@@ -6,7 +6,6 @@ import twitterlogo from '../../../assets/icon/twitter.svg';
 import youtubelogo from '../../../assets/icon/youtube.svg';
 import logo from '../../../assets/img/logo.svg';
 import phoneicon from '../../../assets/icon/phone.svg';
-import compaire from '../../../assets/icon/campare.svg';
 import shopicon from '../../../assets/icon/shop.svg';
 import heart from '../../../assets/icon/heart.svg';
 import { nanoid } from '@reduxjs/toolkit';

@@ -4,15 +4,22 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider } from '@mui/system';
+
 import theme from './theme/theme';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const queryClient = new QueryClient()
+
 root.render(
 
     <BrowserRouter>
         <Provider store={store}>
             <ThemeProvider theme={theme}>
-                <App />
+                <QueryClientProvider client={queryClient}>
+                    <App />
+                </QueryClientProvider>
             </ThemeProvider>
 
         </Provider>

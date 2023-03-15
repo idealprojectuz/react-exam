@@ -1,10 +1,15 @@
 import React from 'react'
-import { Slider } from '../components/slider/slider';
+import { Slider } from './slider/slider';
+import { Servis } from './servise/servis';
+import { Products } from './products/products';
+import { Banner } from './banners/banner';
 export const Home = () => {
     return (
-        <div className="container" style={{ maxWidth: '1493px' }}>
+        <>
             <Slider />
-
-        </div >
+            <Servis />
+            <Banner /> 
+            <Products />
+        </>
     )
 }
