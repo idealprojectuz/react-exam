@@ -5,12 +5,44 @@ import placeholder from '../../assets/img/woocommerce-placeholder.png'
 import './card.scss'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-export const ProductCard = ({ item, width }) => {
+import { useSelector, useDispatch } from 'react-redux'
+import { addData, removeData } from '../../redux/slice/cardslice'
+import { saveState } from '../../utils/savestate'
+import { store } from '../../redux/store'
 
+
+store.subscribe(() => {
+    saveState('card', store.getState().card)
+})
+
+
+
+
+export const ProductCard = ({ item, width }) => {
+    const productdata = useSelector((state) => state.card.data)
+    const [productstate, setproductstate] = React.useState(0)
+    const dispatch = useDispatch()
+    const pushingdata = (events) => {
+        if (events === 'add') {
+            dispatch(addData(item))
+            setproductstate(1)
+        }
+        else if (events === 'remove') {
+            dispatch(removeData(item))
+            setproductstate(0)
+        }
+    }
+    React.useEffect(() => {
+        if (productdata.length) {
+            const result = productdata.find(obj => obj.id === item.id);
+            if (result) {
+                setproductstate(1)
+            }
+        }
+    }, [])
     return (
         <div className='productcart'>
             <Card className='productWrapper'>
-
                 <LazyLoadImage
                     alt='product-image'
                     effect="blur"
@@ -30,24 +62,22 @@ export const ProductCard = ({ item, width }) => {
                     <Stack direction="row" justifyContent={'space-between'} alignItems='center' >
                         <Stack>
                             <Typography variant='subtitle1' fontWeight={'bold'} color='text.primary'>
-                                {/* 13.000.000 som */}
-                                {/* {item.price ? formatNumber(item.price) : 'Narx kiritilmagan'} */}
-                                {/* {formatNumber(item?.price)} som */}
+
                                 {item?.price} som
                             </Typography>
                         </Stack>
                         <Stack>
-                            <IconButton sx={{ backgroundColor: '#F6F6F6' }}>
+                            {productstate ? <IconButton sx={{ backgroundColor: '#F6F6F6' }} onClick={() => pushingdata('remove')}>
+                                <svg width={20} height={22} viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 4.98C15.67 4.65 12.32 4.48 8.98 4.48C7 4.48 5.02 4.58 3.04 4.78L1 4.98M6.5 3.97L6.72 2.66C6.88 1.71 7 1 8.69 1H11.31C13 1 13.13 1.75 13.28 2.67L13.5 3.97M16.85 8.14L16.2 18.21C16.09 19.78 16 21 13.21 21H6.79C4 21 3.91 19.78 3.8 18.21L3.15 8.14M8.33 15.5H11.66M7.5 11.5H12.5" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </IconButton> : <IconButton sx={{ backgroundColor: '#F6F6F6' }} onClick={() => pushingdata('add')}>
                                 <svg width={22} height={22} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 11H15M11 15V7M8 21H14C19 21 21 19 21 14V8C21 3 19 1 14 1H8C3 1 1 3 1 8V14C1 19 3 21 8 21Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
+                            </IconButton>}
 
 
-
-                                {/* <svg width={20} height={22} viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19 4.98C15.67 4.65 12.32 4.48 8.98 4.48C7 4.48 5.02 4.58 3.04 4.78L1 4.98M6.5 3.97L6.72 2.66C6.88 1.71 7 1 8.69 1H11.31C13 1 13.13 1.75 13.28 2.67L13.5 3.97M16.85 8.14L16.2 18.21C16.09 19.78 16 21 13.21 21H6.79C4 21 3.91 19.78 3.8 18.21L3.15 8.14M8.33 15.5H11.66M7.5 11.5H12.5" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg> */}
-                            </IconButton>
                         </Stack>
                     </Stack>
                 </CardContent>

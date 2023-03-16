@@ -15,14 +15,15 @@ const queryClient = new QueryClient()
 root.render(
 
     <BrowserRouter>
-        <Provider store={store}>
-            <ThemeProvider theme={theme}>
-                <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+            <QueryClientProvider client={queryClient}>
+                <Provider store={store}>
                     <App />
-                </QueryClientProvider>
-            </ThemeProvider>
+                </Provider>
 
-        </Provider>
+            </QueryClientProvider>
+        </ThemeProvider>
+
     </BrowserRouter>
 
 );
