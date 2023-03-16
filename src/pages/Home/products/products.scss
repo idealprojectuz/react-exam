@@ -73,6 +73,8 @@
 }
 
 
+
+
 @media screen and (max-width: 938px) {
     .productcart {
         width: 30%;
@@ -92,6 +94,11 @@
 @media screen and (max-width: 648px) {
     .product .container {
         max-width: 600px;
+    }
+
+    .product-menu {
+        display: flex;
+        flex-direction: column !important;
     }
 
     .productcart {

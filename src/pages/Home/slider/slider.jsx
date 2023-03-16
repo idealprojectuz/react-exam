@@ -10,6 +10,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export const Slider = () => {
     const Swiperstyled = styled(SwiperSlide)`
         height: 80vh;
@@ -38,7 +40,10 @@ export const Slider = () => {
                             }} color='primary'>Buy now</Button>
                         </div>
                         <div className='sliderimage'>
-                            <img src={appleimage} alt="Apple brand" />
+                            <LazyLoadImage
+                                alt='product-image'
+                                effect="blur"
+                                src={appleimage} />
                         </div>
                     </div>
                 </Swiperstyled>
@@ -52,8 +57,11 @@ export const Slider = () => {
                             }} color='primary'>Buy now</Button>
                         </div>
                         <div className='sliderimage' id='macbookphoto'>
-                            <img src={applegif} alt="Apple brand" />
-
+                            {/* <img src={applegif} alt="Apple brand" /> */}
+                            <LazyLoadImage
+                                alt='Apple brand'
+                                effect="blur"
+                                src={applegif} />
 
                         </div>
                     </div>

@@ -1,7 +1,17 @@
 import React from 'react'
 import { ProductCard } from '../../../components/card/card'
+import { Skeleton } from '../products/skeleton';
+import { useQueryClient, useQuery } from '@tanstack/react-query';
+import { getdata } from '../../../servis/servis';
 const Achiveproduct = () => {
-
+    const queryClient = useQueryClient();
+    const { isLoading, isError, data } = useQuery(
+        {
+            queryKey: ['products'],
+            queryFn: getdata,
+            onError: () => { },
+            onSuccess: () => { },
+        })
     return (
         <section className='product'>
             <div className='container'>
@@ -15,10 +25,13 @@ const Achiveproduct = () => {
                     </p>
                 </div>
                 <div className='productStack'>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {isLoading ? (
+                        <Skeleton />
+                    ) : isError ? (
+                        <div>Something went wrong...</div>
+                    ) : (
+                        data?.map((item) => <ProductCard key={item.id} item={item} />)
+                    )}
                 </div>
             </div>
         </section>

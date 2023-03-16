@@ -1,59 +1,127 @@
-import React from 'react'
+// import React from 'react'
+// import './products.scss';
+// import { getdata } from '../../../servis/servis';
+// import { useQuery } from '@tanstack/react-query';
+// import { Button } from '@mui/material';
+// import { ProductCard } from '../../../components/card/card';
+// import { Skeleton } from './skeleton';
+// import { useQuery, useQueryClient } from '@tanstack/react-query'
+
+
+// export const Products = () => {
+//     const [menu, setmenu] = React.useState('1')
+//     const [data, setdata] = React.useState([])
+//     const queryClient = useQueryClient()
+//     queryClient.invalidateQueries({ queryKey: ['products'] })
+
+//     const query = useQuery(
+//         {
+//             queryKey: ['products'],
+//             queryFn: getdata,
+//             onError: () => { },
+//             onSuccess: () => { },
+//         })
+//     const menuHandler = (e) => {
+//         setmenu(e.target.id)
+//     }
+//     React.useEffect(() => {
+//         const todoListQuery = useQuery({
+//             queryKey: ['products'],
+//             queryFn: fetchTodoList,
+//         })
+//     }, [menu, query])
+//     return (
+//         <section className='product'>
+//             <div className='container'>
+//                 <div className="banner-heading">
+//                     <h2 className="banner-title">
+//                         Our products
+//                     </h2>
+//                     <span className='tag-line'></span>
+//                     <p className='banner-subtitle'>
+//                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, culpa?
+//                     </p>
+//                 </div>
+//                 <div className="product-menu">
+//                     <Button id='1' className={menu === '1' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>new products</Button>
+//                     <Button id='2' className={menu === '2' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler} >onsale</Button>
+//                     <Button id='3' className={menu === '3' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>upcoming products</Button>
+//                     {/* <Button>onsale</Button>
+//                     <Button>upcoming products</Button> */}
+//                 </div>
+//                 <div className='productStack'>
+//                     {query.isLoading ? <>
+//                         <Skeleton />
+//                     </> : data?.map(item => <ProductCard key={item.id} item={item} />)}
+//                 </div>
+//             </div>
+//         </section>
+//     )
+// }
+
+
+
+
+import React from 'react';
 import './products.scss';
 import { getdata } from '../../../servis/servis';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@mui/material';
 import { ProductCard } from '../../../components/card/card';
-import { Stack } from '@mui/system';
+import { Skeleton } from './skeleton';
+
 export const Products = () => {
-    const [menu, setmenu] = React.useState('1')
-    // const req = useQuery(
-    //         {
-    //             queryKey: ['products'],
-    //             queryFn: getdata,
-    //             onError: () => { },
-    //         onSuccess: () => { },
+    const [menu, setMenu] = React.useState('1');
+    const queryClient = useQueryClient();
 
-    //         })
-
-    const query = useQuery(
+    const { isLoading, isError, data } = useQuery(
+        ['products', menu],
+        () => getdata(menu),
         {
-            queryKey: ['products'],
-            queryFn: getdata,
             onError: () => { },
             onSuccess: () => { },
-        })
+        }
+    );
+
+    React.useEffect(() => {
+        queryClient.invalidateQueries('products');
+    }, [menu]);
+
     const menuHandler = (e) => {
-        setmenu(e.target.id)
-        query.refetch()
-    }
+        setMenu(e.target.id);
+    };
 
     return (
         <section className='product'>
             <div className='container'>
-                <div className="banner-heading">
-                    <h2 className="banner-title">
-                        Our products
-                    </h2>
+                <div className='banner-heading'>
+                    <h2 className='banner-title'>Our products</h2>
                     <span className='tag-line'></span>
                     <p className='banner-subtitle'>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, culpa?
                     </p>
                 </div>
-                <div className="product-menu">
-                    <Button id='1' className={menu === '1' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>new products</Button>
-                    <Button id='2' className={menu === '2' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler} >onsale</Button>
-                    <Button id='3' className={menu === '3' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>upcoming products</Button>
-                    {/* <Button>onsale</Button>
-                    <Button>upcoming products</Button> */}
+                <div className='product-menu'>
+                    <Button id='1' className={menu === '1' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>
+                        new products
+                    </Button>
+                    <Button id='2' className={menu === '2' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>
+                        onsale
+                    </Button>
+                    <Button id='3' className={menu === '3' ? 'menu-active' : 'menu-button-item'} onClick={menuHandler}>
+                        upcoming products
+                    </Button>
                 </div>
                 <div className='productStack'>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {isLoading ? (
+                        <Skeleton />
+                    ) : isError ? (
+                        <div>Something went wrong...</div>
+                    ) : (
+                        data?.map((item) => <ProductCard key={item.id} item={item} />)
+                    )}
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};

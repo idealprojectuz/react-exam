@@ -1,34 +1,39 @@
 import React from 'react'
-import { Paper, Card, CardMedia, CardContent, Typography, IconButton } from '@mui/material'
+import { Card, CardContent, Typography, IconButton } from '@mui/material'
 import { Stack } from '@mui/system'
+import placeholder from '../../assets/img/woocommerce-placeholder.png'
 import './card.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export const ProductCard = ({ item, width }) => {
+
     return (
         <div className='productcart'>
             <Card className='productWrapper'>
-                <CardMedia
-                    component="img"
+
+                <LazyLoadImage
+                    alt='product-image'
+                    effect="blur"
+                    style={{ objectFit: 'contain', padding: '22px' }}
                     height="300px"
-                    style={{ objectFit: 'cover' }}
-                    image="https://cp.ectn.uz/files//0622/sub_s_govyadinoy_evos.png"
-                    alt="Paella dish"
-                />
+                    width='100%'
+                    src={item?.image ? item.image : placeholder} />
                 <IconButton className='likebutton'>
                     <svg width={22} height={20} viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.62 18.81C11.28 18.93 10.72 18.93 10.38 18.81C7.48 17.82 1 13.69 1 6.69001C1 3.60001 3.49 1.10001 6.56 1.10001C8.38 1.10001 9.99 1.98001 11 3.34001C11.5138 2.64588 12.183 2.08173 12.954 1.69275C13.725 1.30377 14.5764 1.10077 15.44 1.10001C18.51 1.10001 21 3.60001 21 6.69001C21 13.69 14.52 17.82 11.62 18.81Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-
-
-
                 </IconButton>
                 <CardContent>
                     <Typography variant="subtitle1" color="text.primary">
-                        On Trend Makeup and Beauty Cosmetics
+                        {item?.name}
                     </Typography>
                     <Stack direction="row" justifyContent={'space-between'} alignItems='center' >
                         <Stack>
-                            <Typography variant='subtitle1' color='text.primary'>
-                                13.000.000 som
+                            <Typography variant='subtitle1' fontWeight={'bold'} color='text.primary'>
+                                {/* 13.000.000 som */}
+                                {/* {item.price ? formatNumber(item.price) : 'Narx kiritilmagan'} */}
+                                {/* {formatNumber(item?.price)} som */}
+                                {item?.price} som
                             </Typography>
                         </Stack>
                         <Stack>

@@ -58,8 +58,6 @@ export const Logocarusel = () => {
                     spaceBetween={2}
                     slidesPerView={8}
                     loop={true}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
 
                     breakpoints={{
                         100: {

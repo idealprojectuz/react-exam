@@ -13,13 +13,16 @@ export const Banner = () => {
                     <li className='banner-item'>
                         {/* <img src={banner1} alt="banner" /> */}
                         <LazyLoadImage
+                            width='100%'
                             alt='banner'
                             effect="blur"
+
                             src={banner1} />
                     </li>
                     <li className='banner-item'>
                         {/* <img src={banner2} alt="banner" /> */}
                         <LazyLoadImage
+                            width='100%'
                             alt='banner'
                             effect="blur"
                             src={banner2} />
@@ -27,6 +30,7 @@ export const Banner = () => {
                     <li className='banner-item'>
                         {/* <img src={banner3} alt="banner" /> */}
                         <LazyLoadImage
+                            width='100%'
                             alt='banner'
                             effect="blur"
                             src={banner3} />
