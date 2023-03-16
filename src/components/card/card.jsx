@@ -39,7 +39,7 @@ export const ProductCard = ({ item, width }) => {
                 setproductstate(1)
             }
         }
-    }, [])
+    }, [item.id, productdata])
     return (
         <div className='productcart'>
             <Card className='productWrapper'>
