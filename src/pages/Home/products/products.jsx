@@ -85,7 +85,7 @@ export const Products = () => {
 
     React.useEffect(() => {
         queryClient.invalidateQueries('products');
-    }, [menu]);
+    }, [menu, queryClient]);
 
     const menuHandler = (e) => {
         setMenu(e.target.id);

@@ -1,10 +1,9 @@
 import React from 'react'
 import { ProductCard } from '../../../components/card/card'
 import { Skeleton } from '../products/skeleton';
-import { useQueryClient, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getdata } from '../../../servis/servis';
 const Achiveproduct = () => {
-    const queryClient = useQueryClient();
     const { isLoading, isError, data } = useQuery(
         {
             queryKey: ['products'],
