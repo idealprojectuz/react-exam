@@ -12,13 +12,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-export const Slider = () => {
-    const Swiperstyled = styled(SwiperSlide)`
+const Swiperstyled = styled(SwiperSlide)`
         height: 80vh;
         @media (max-width: 510px){
             height: 90vh;
         }
     `
+
+export const Slider = () => {
+
     return (
         <section id='slider'>
 

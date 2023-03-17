@@ -1,0 +1,140 @@
+.product-wrapper {
+    display: flex;
+    justify-content: center;
+
+}
+
+.newproduct {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.newproduct-box {
+    width: 60%;
+    padding-bottom: 50px;
+    box-shadow: 0px 2px 7px #bdbdbd;
+}
+
+.newproduct-title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.product-form-input {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    input {
+        width: 100%;
+        height: 45px;
+        padding-left: 10px;
+        outline: none;
+        background: #FFFFFF;
+        border: 1px solid #CED4DA;
+        border-radius: 4px;
+        color: #565656;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    input:focus,
+    textarea:focus {
+        border: 1px solid #001dfa;
+        transition: 0.3s ease-in-out;
+    }
+
+    textarea {
+        color: #565656;
+        width: 100%;
+        height: 122px;
+        background: #FFFFFF;
+        padding-left: 10px;
+        padding-top: 10px;
+        border: 1px solid #CED4DA;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border-radius: 4px;
+        line-height: 24px;
+        outline: none;
+    }
+
+
+}
+
+.uploading {
+    width: 100%;
+    display: block;
+    border: 3px dashed #bbbbbb;
+    border-radius: 8px;
+    height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .upload-svg {
+
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        svg {
+            path {
+                stroke: #5b5ac9 !important;
+            }
+
+            stroke: #5b5ac9 !important;
+        }
+
+        span {
+            font-size: 12px;
+        }
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.product-form {
+    display: flex;
+    justify-content: center;
+}
+
+.submitbtn {
+    width: 100%;
+}
+
+.errormessage {
+    color: red;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 635px) {
+    .newproduct-box {
+        width: 90%;
+    }
+
+    .product-form-input {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .newproduct-box {
+        width: 100%;
+    }
+
+    .product-form-input {
+        width: 90%;
+    }
+}

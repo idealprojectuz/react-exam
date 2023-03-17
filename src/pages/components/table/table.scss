@@ -1,0 +1,179 @@
+.looki-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 57px;
+    // border: 1px solid black;
+}
+
+.tables__title {
+    margin-top: 54px;
+}
+
+.looki-table__head {
+    height: 44px;
+    color: white;
+    border: none;
+    background-color: #5A5AC9;
+}
+
+.looki-table__body {
+    text-align: center;
+
+}
+
+.looki-table-image {
+
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+    }
+}
+
+.looki-table-stock-wrap {
+    width: 57.3px;
+    height: 22px;
+
+    background: #5A5AC9;
+    border-radius: 6px;
+
+    span {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
+        color: #FFFFFF;
+    }
+}
+
+.stock-align {
+    display: flex;
+    justify-content: center;
+}
+
+
+.looki-counter {
+    width: 80px;
+    height: 54px;
+    border: 1px solid #EBEBEB;
+}
+
+.looki-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    // padding-right: 5px;
+}
+
+.looki-counter-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // gap: 10px;
+
+    width: 30px;
+    border-left: 1px solid #EBEBEB;
+
+    .looki-counter-right__top {
+        height: 50%;
+        border-bottom: 1px solid #EBEBEB;
+    }
+
+    .looki-counter-right__bottom {
+        height: 50%;
+    }
+}
+
+.lookie-counter-left {
+    text-align: center;
+    width: 100%;
+}
+
+.looki-counter-right__top,
+.looki-counter-right__bottom {
+    cursor: pointer;
+}
+
+
+.count-message {
+
+    h2 {
+        text-align: center;
+        display: block;
+
+    }
+}
+
+.looki-table-tr {
+    border-bottom: 1px solid #EBEBEB;
+}
+
+@media screen and (max-width: 1240px) {
+    .orderform {
+        .container {
+            max-width: 1000px;
+        }
+    }
+
+    .country {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 815px) {
+    .orderform {
+        .container {
+            max-width: 700px;
+        }
+    }
+
+    .orderwrapper {
+        flex-direction: column;
+    }
+
+    .totalprice-wrap {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .d-flex {
+        justify-content: space-between !important;
+    }
+
+    .totalprice {
+        width: 90% !important;
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 612px) {
+    .looki-table__head {
+        tr th:nth-child(3) {
+            display: none;
+        }
+    }
+
+    .looki-table-stock {
+        display: none;
+    }
+
+    .looki-table-image {
+
+        img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+    }
+}
+
+@media screen and (max-width: 361px) {
+
+    .looki-table__head tr th:nth-child(1),
+    .looki-table-image {
+        display: none;
+    }
+
+}

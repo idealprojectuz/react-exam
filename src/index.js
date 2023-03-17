@@ -18,7 +18,9 @@ root.render(
         <ThemeProvider theme={theme}>
             <QueryClientProvider client={queryClient}>
                 <Provider store={store}>
-                    <App />
+                    <React.StrictMode>
+                        <App />
+                    </React.StrictMode>
                 </Provider>
 
             </QueryClientProvider>

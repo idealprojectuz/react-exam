@@ -6,12 +6,39 @@ import twitterlogo from '../../../assets/icon/twitter.svg';
 import youtubelogo from '../../../assets/icon/youtube.svg';
 import logo from '../../../assets/img/logo.svg';
 import phoneicon from '../../../assets/icon/phone.svg';
-import shopicon from '../../../assets/icon/shop.svg';
 import heart from '../../../assets/icon/heart.svg';
+import shopicon from '../../../assets/icon/shop.svg'
 import { nanoid } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 import { Button, IconButton, Badge } from '@mui/material';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+// import { Cardmodal } from '../../../components/modal/Modal';
+
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        right: 0,
+        top: '10%',
+        width: '20px',
+        height: '20px',
+        position: 'absolute'
+        // padding: '0 4px',
+    },
+}));
+
+const PhoneButton = styled(Button)`
+        border: none !important;
+        &:hover{
+            border: none;
+        }
+       
+    `
 const Header = () => {
+    const totallike = useSelector(state => state.like.totallike)
+    const count = useSelector((state) => state.card.totalcount)
+
     const menu = [
         {
             id: nanoid(),
@@ -34,23 +61,8 @@ const Header = () => {
             link: '#'
         },
     ]
-    const PhoneButton = styled(Button)`
-        border: none !important;
-        &:hover{
-            border: none;
-        }
-       
-    `
-    const StyledBadge = styled(Badge)(({ theme }) => ({
-        '& .MuiBadge-badge': {
-            right: 0,
-            top: '10%',
-            width: '20px',
-            height: '20px',
-            position: 'absolute'
-            // padding: '0 4px',
-        },
-    }));
+
+
     return (
         <header className='header'>
             <nav className='header__nav'>
@@ -91,12 +103,16 @@ const Header = () => {
                 <div className='header__nav-main'>
                     <div className="container nav-flex">
                         <div className="logo">
-                            <img src={logo} alt="looki" />
+                            <Link to={'/'}>
+                                <img src={logo} alt="looki" />
+                            </Link>
                         </div>
                         <div className="menu">
                             <ul className='menu-wrapper'>
                                 <li className='menu-item active'>
-                                    Home
+                                    <Link to={'/'} style={{ textDecoration: 'none' }} className="menu-item">
+                                        Home
+                                    </Link>
                                 </li>
                                 <li className='menu-item '>
                                     Shop
@@ -107,9 +123,11 @@ const Header = () => {
                                 <li className='menu-item '>
                                     Blog
                                 </li>
-                                <li className='menu-item '>
-                                    ADmin Panel
-                                </li>
+                                <Link to={'/dashboard'} style={{ textDecoration: 'none' }} className="menu-item">
+                                    <li className='menu-item '>
+                                        Admin Panel
+                                    </li>
+                                </Link>
                             </ul>
                         </div>
                         <div className="nav-action">
@@ -123,18 +141,22 @@ const Header = () => {
                                     </IconButton>
                                 </li>
                                 <li className='icon-item'>
-                                    <IconButton color='primary'>
-                                        <StyledBadge badgeContent={4} color="primary">
-                                            <img src={heart} alt="like" />
-                                        </StyledBadge>
-                                    </IconButton>
+                                    <Link to={'wishlist'}>
+                                        <IconButton color='primary'>
+                                            <StyledBadge badgeContent={totallike ? totallike : ''} color="primary">
+                                                <img src={heart} alt="like" />
+                                            </StyledBadge>
+                                        </IconButton>
+                                    </Link>
                                 </li>
                                 <li className='icon-item'>
-                                    <IconButton color='primary'>
-                                        <StyledBadge badgeContent={4} color="primary">
-                                            <img src={shopicon} alt="shop" />
-                                        </StyledBadge>
-                                    </IconButton>
+                                    <Link to='card'>
+                                        <IconButton>
+                                            <StyledBadge badgeContent={count ? count : ''} color="primary">
+                                                <img src={shopicon} alt="shop" />
+                                            </StyledBadge>
+                                        </IconButton>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

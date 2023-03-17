@@ -1,0 +1,72 @@
+.page-heading-title {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    /* identical to box height, or 125% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #111111;
+}
+
+.page-heading {
+    text-align: center;
+}
+
+.page-heading-title {
+    display: block;
+    text-align: center;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    text-transform: capitalize;
+    margin-bottom: 22px;
+    color: #111111;
+}
+
+.page-subtitle-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 21px;
+    align-items: center;
+}
+
+.page-heading-subtitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+
+    text-transform: capitalize;
+    color: #111111;
+}
+
+.page-currentpage {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #5A5AC9;
+}
+
+.pagetitle {
+    height: 352.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F6F6F6;
+
+    .tag-line {
+        margin-bottom: 45px;
+    }
+}

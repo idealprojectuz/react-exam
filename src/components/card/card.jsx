@@ -9,20 +9,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addData, removeData } from '../../redux/slice/cardslice'
 import { saveState } from '../../utils/savestate'
 import { store } from '../../redux/store'
-
+import { addlike, removeLike } from '../../redux/slice/likeslice'
 
 store.subscribe(() => {
     saveState('card', store.getState().card)
+    saveState('like', store.getState().like)
 })
 
 
 
 
-export const ProductCard = ({ item, width }) => {
+export const ProductCard = ({ item }) => {
     const productdata = useSelector((state) => state.card.data)
+    const likedata = useSelector((state) => state.like.data)
     const [productstate, setproductstate] = React.useState(0)
+    const [likestate, setLikestate] = React.useState(0)
     const dispatch = useDispatch()
     const pushingdata = (events) => {
+
         if (events === 'add') {
             dispatch(addData(item))
             setproductstate(1)
@@ -32,6 +36,16 @@ export const ProductCard = ({ item, width }) => {
             setproductstate(0)
         }
     }
+    const likepush = (events) => {
+        if (events === 'add') {
+            dispatch(addlike(item))
+            setLikestate(1)
+        }
+        else if (events === 'remove') {
+            dispatch(removeLike(item))
+            setLikestate(0)
+        }
+    }
     React.useEffect(() => {
         if (productdata.length) {
             const result = productdata.find(obj => obj.id === item.id);
@@ -39,7 +53,13 @@ export const ProductCard = ({ item, width }) => {
                 setproductstate(1)
             }
         }
-    }, [item.id, productdata])
+        if (likedata.length) {
+            const result = likedata.find(obj => obj.id === item.id);
+            if (result) {
+                setLikestate(1)
+            }
+        }
+    }, [item.id, productdata, likedata])
     return (
         <div className='productcart'>
             <Card className='productWrapper'>
@@ -50,11 +70,19 @@ export const ProductCard = ({ item, width }) => {
                     height="300px"
                     width='100%'
                     src={item?.image ? item.image : placeholder} />
-                <IconButton className='likebutton'>
-                    <svg width={22} height={20} viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.62 18.81C11.28 18.93 10.72 18.93 10.38 18.81C7.48 17.82 1 13.69 1 6.69001C1 3.60001 3.49 1.10001 6.56 1.10001C8.38 1.10001 9.99 1.98001 11 3.34001C11.5138 2.64588 12.183 2.08173 12.954 1.69275C13.725 1.30377 14.5764 1.10077 15.44 1.10001C18.51 1.10001 21 3.60001 21 6.69001C21 13.69 14.52 17.82 11.62 18.81Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </IconButton>
+                {likestate ?
+                    <IconButton className='likebutton' onClick={() => likepush('remove')}>
+                        <svg width={22} height={20} viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.62 18.81C11.28 18.93 10.72 18.93 10.38 18.81C7.48 17.82 1 13.69 1 6.69001C1 3.60001 3.49 1.10001 6.56 1.10001C8.38 1.10001 9.99 1.98001 11 3.34001C11.5138 2.64588 12.183 2.08173 12.954 1.69275C13.725 1.30377 14.5764 1.10077 15.44 1.10001C18.51 1.10001 21 3.60001 21 6.69001C21 13.69 14.52 17.82 11.62 18.81Z" stroke="black" fill='red' strokeWidth="0" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </IconButton>
+                    :
+                    <IconButton className='likebutton' onClick={() => likepush('add')}>
+                        <svg width={22} height={20} viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.62 18.81C11.28 18.93 10.72 18.93 10.38 18.81C7.48 17.82 1 13.69 1 6.69001C1 3.60001 3.49 1.10001 6.56 1.10001C8.38 1.10001 9.99 1.98001 11 3.34001C11.5138 2.64588 12.183 2.08173 12.954 1.69275C13.725 1.30377 14.5764 1.10077 15.44 1.10001C18.51 1.10001 21 3.60001 21 6.69001C21 13.69 14.52 17.82 11.62 18.81Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </IconButton>}
+
                 <CardContent>
                     <Typography variant="subtitle1" color="text.primary">
                         {item?.name}
